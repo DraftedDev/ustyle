@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 categories = ["no-std", "no-std::no-alloc", "command-line-interface", "embedded", "parser-implementations"]
 keywords = ["style", "ansi", "terminal", "console", "color"]
-description = ""
+description = "A text-styling library for Rust `no_std` embedded targets."
 authors = ["Mikail Plotzky <mp@ypon.com>"]
 license = "MIT"
 
