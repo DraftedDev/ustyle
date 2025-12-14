@@ -40,7 +40,7 @@ impl Style {
     /// Style the given [Arguments] by writing the style descriptor and content to the specified writer.
     ///
     /// This will write exactly 5 bytes + the length of the string to the writer.
-    pub fn style_fmt_to(&self, write: &mut dyn Write, args: Arguments) -> fmt::Result {
+    pub fn style_fmt_to(&self, write: &mut dyn Write, args: &Arguments) -> fmt::Result {
         let [fg, bg, attr] = self.encode_desc();
 
         write!(write, "{START}")?;
