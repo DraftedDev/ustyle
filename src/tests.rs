@@ -19,7 +19,7 @@ fn test_encode() {
 
     let mut output = heapless::String::<{ TEST.len() + STYLE_LEN }>::new();
 
-    STYLE.style_to(&mut output, format_args!("{TEST}")).unwrap();
+    STYLE.style_to(&mut output, "{TEST}").unwrap();
 
     assert_eq!(output.as_bytes(), TEST_OUT.as_bytes());
 }
