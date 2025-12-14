@@ -1,0 +1,22 @@
+[package]
+name = "ustyle"
+version = "0.1.0"
+edition = "2024"
+categories = ["no-std", "no-std::no-alloc", "command-line-interface", "embedded", "parser-implementations"]
+keywords = ["style", "ansi", "terminal", "console", "color"]
+description = ""
+authors = ["Mikail Plotzky <mp@ypon.com>"]
+license = "MIT"
+
+[dependencies]
+bitflags = "2.10.0"
+
+[dev-dependencies]
+heapless = "0.9.2"
+
+[features]
+# Enable heap allocations by default
+default = ["alloc"]
+
+# Enable heap allocations
+alloc = []
