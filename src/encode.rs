@@ -24,14 +24,14 @@ impl Style {
     /// Style the given string by writing the style descriptor and content to the specified writer.
     ///
     /// This will write exactly 5 bytes + the length of the string to the writer.
-    pub fn style_to(&self, write: &mut dyn Write, string: &str) -> fmt::Result {
+    pub fn style_to(&self, write: &mut dyn Write, args: fmt::Arguments) -> fmt::Result {
         let [fg, bg, attr] = self.encode_desc();
 
         write!(write, "{}", START)?;
         write!(write, "{}", fg)?;
         write!(write, "{}", bg)?;
         write!(write, "{}", attr)?;
-        write!(write, "{}", string)?;
+        write!(write, "{}", args)?;
         write!(write, "{}", END)?;
 
         Ok(())
@@ -46,7 +46,7 @@ impl Style {
     pub fn style(&self, string: &str) -> alloc::string::String {
         let mut out = alloc::string::String::with_capacity(string.len() + STYLE_LEN);
 
-        self.style_to(&mut out, string)
+        self.style_to(&mut out, format_args!("{string}"))
             .expect("failed to style string");
 
         out
