@@ -1,4 +1,4 @@
-use crate::{DESCRIPTOR_LEN, END, START, STYLE_LEN, Style};
+use crate::{DESCRIPTOR_LEN, END, START, Style};
 use core::fmt;
 use core::fmt::{Arguments, Write};
 
@@ -60,7 +60,7 @@ impl Style {
     /// Returns the resulting heap-allocated [alloc::string::String].
     #[cfg(feature = "alloc")]
     pub fn style(&self, string: &str) -> alloc::string::String {
-        let mut out = alloc::string::String::with_capacity(string.len() + STYLE_LEN);
+        let mut out = alloc::string::String::with_capacity(string.len() + crate::STYLE_LEN);
 
         self.style_to(&mut out, string)
             .expect("failed to style string");

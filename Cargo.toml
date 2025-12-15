@@ -10,6 +10,7 @@ license = "MIT"
 
 [dependencies]
 bitflags = "2.10.0"
+memchr = { version = "2.7.6", default-features = false, optional = true }
 
 [dev-dependencies]
 heapless = "0.9.2"
@@ -19,4 +20,4 @@ heapless = "0.9.2"
 default = ["alloc"]
 
 # Enable heap allocations
-alloc = []
+alloc = ["memchr"]
