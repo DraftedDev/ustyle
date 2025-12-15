@@ -11,19 +11,19 @@
 After I tried creating a `no_std` embedded ANSI library, I noticed serious flaws in the ANSI format and decided to
 create my own [format](FORMAT.md):
 
-μStyle (pronounced "Micro Style") is a ASCII-compatible text-styling [format](FORMAT.md) and library to style text with
+μStyle (pronounced "Micro Style") is a ASCII-compatible text-styling format and library to style text with
 colors and
 attributes. The
 [format](FORMAT.md) is similar to ANSI, but uses way less bytes and is more compact.
 
-This [format](FORMAT.md) allows for fully heap-less styling of text without much stack-overhead.
+It allows for fully heap-less styling of text without much stack-overhead.
 
 ## Why μStyle?
 
 - Styling only adds 5 bytes of overhead.
 - Very predictable behaviour.
 - Fast parsing and low overhead.
-- Very lightweight (only dependency is `bitflags`).
+- Very lightweight.
 - Less complex than ANSI.
 
 ## Comparison with ANSI
