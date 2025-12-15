@@ -19,7 +19,7 @@ fn test_encode() {
 
     let mut output = heapless::String::<{ TEST.len() + STYLE_LEN }>::new();
 
-    STYLE.style_to(&mut output, "{TEST}").unwrap();
+    STYLE.style_to(&mut output, TEST).unwrap();
 
     assert_eq!(output.as_bytes(), TEST_OUT.as_bytes());
 }
@@ -38,13 +38,13 @@ fn test_encode_heap() {
 #[cfg(feature = "alloc")]
 #[test]
 fn test_decode() {
-    const TEST: &str =
-        "\x01\x20\u{4}\u{1f}Hello, World 123!\x02\x01\x20\u{4}\u{1f}World, Hello 321?\x02";
+    const TEST: &str = "\x01\x20\u{4}\u{1f}Hello, World 123!\x02Unstyled Text\x01\x20\u{4}\u{1f}World, Hello 321?\x02";
 
     use alloc::string::ToString;
 
     let out: alloc::vec::Vec<Span> = alloc::vec![
         Span::new("Hello, World 123!".to_string(), STYLE),
+        Span::new("Unstyled Text".to_string(), Style::default()),
         Span::new("World, Hello 321?".to_string(), STYLE),
     ];
 
